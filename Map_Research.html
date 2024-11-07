@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>East Asia Map - Researcher</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js"></script>
+    <link rel="stylesheet" href="./css/map_research.css">
+</head>
+
+<body>
+    <header class="headerindex">
+        <h1>OECD Renewable Energy Project Overview</h1>
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                class="bi bi-layout-sidebar" viewBox="0 0 16 16">
+                <path
+                    d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
+            </svg>
+        </button>
+    </header>
+
+    <nav>
+        <h2>Navigation</h2>
+        <a href=".index.html#introduction">Introduction</a>
+        <a href="./index.html#background">Background and Motivation</a>
+        <a href="./index.html#objectives">Project Objective</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">East Asia Researcher</span>
+            <div class="dropdown-content">
+                <a href="./Map_Research.html">Researcher</a>
+                <a href="./Map_Government.html">Government Researcher</a>
+            </div>
+        </div>
+
+        <a href="./index.html#conclusion">Conclusion</a>
+    </nav>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+    <main>
+        <h1>East Asia Map - Researcher</h1>
+
+        <!-- Dropdown to select year -->
+        <div class="select-container">
+            <label for="yearSelect_Research">Select Year:</label>
+            <select id="yearSelect_Research">
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+        </div>
+
+        <!-- Buttons to select MEASURE -->
+        <div class="button-group">
+            <button id="pcResearcherBtn">Researcher (% of total researchers)</button>
+            <button id="headcountBtn">Total Researchers (Headcount)</button>
+        </div>
+
+        <!-- Map container -->
+        <div id="map-container">
+            <svg id="mapSvg" width="1200" height="700"></svg>
+        </div>
+
+        <!-- Legend container -->
+        <div id="legend" style="text-align:center; justify-content:center; justify-items:center;">
+            <svg id="legendSvg" width="500" height="70"></svg>
+        </div>
+
+        <!-- Country with the highest value -->
+        <div class="legend"
+            style="margin-top: 40px; padding: 20px; border: 1px solid #ccc; border-radius: 8px; background-color: #f9f9f9;">
+            <h3>Year: <span id="yearDisplay">2015</span></h3>
+            <p><span id="highestCountry">N/A</span></p>
+            <p><span id="highestValue">N/A</span></p>
+        </div>
+
+        <script src="./js/Map_Research.js"></script> <!-- Link to your JS file -->
+    </main>
+</body>
+
+</html>

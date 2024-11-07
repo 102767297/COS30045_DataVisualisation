@@ -1,0 +1,56 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.tooltip {
+    position: absolute;
+    text-align: center;
+    width: auto;
+    padding: 5px;
+    font: 12px sans-serif;
+    background: lightsteelblue;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+}
+
+.legend {
+    position: absolute;
+    top: 280px;
+    /* 距离页面顶部20px */
+    left: 27%;
+    transform: translateX(-50%);
+    /* 水平居中 */
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    z-index: 100;
+}
+
+select{
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background: #FCFFF5;
+    border: solid;
+    border-radius: 5px;
+}
+
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background: #D1DBBD;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+    background: #91AA9D;
+    border: none;
+    border-radius: 5px;
+}
