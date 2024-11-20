@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renewable Energy Project Overview</title>
+    <meta name="keywords" content="HTML, CSS, D3" />
+    <meta name="author" content="Lin Poh Seng" />
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/index.js"></script>
+</head>
+
+<body>
+    <header class="headerindex">
+        <h1>OECD Renewable Energy Project Overview</h1>
+        <button class="toggle-btn" onclick="toggleSidebar()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-sidebar"
+                viewBox="0 0 16 16">
+                <path
+                    d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
+            </svg>
+        </button>
+    </header>
+
+    <nav>
+        <h2>Navigation</h2>
+        <a href="#introduction">Introduction</a>
+        <a href="#background">Background and Motivation</a>
+        <a href="#objectives">Project Objective</a>
+        <a href="chart.html">East Asia Development Indicators</a>
+        <div class="dropdown">
+            <span class="dropdown-btn">East Asia Researcher</span>
+            <div class="dropdown-content">
+                <a href="./Map_Research.html">Researcher</a>
+                <a href="./Map_Government.html">Government Researcher</a>
+                <a href="./compare.html">Compare (Researcher & Government)</a>
+            </div>
+        </div>
+        <a href="#conclusion">Conclusion</a>
+    </nav>
+
+    <div class="overlay" onclick="toggleSidebar()"></div>
+
+    <main>
+        <section id="introduction">
+            <h2>Introduction</h2>
+            <div class="intro-content">
+                <p>
+                    Such use of renewable energy is of critical importance to ensure less global climate change and sustainable development.
+                    Renewable energy can lower emissions by an order of magnitude, enhance energy security, and promote energy supply
+                    diversification-all factors that essentially help the nations in the development and implementation of their Nationally
+                    Determined Contributions under the Paris Agreement.
+                </p>
+                <img class="imageintro"
+                    src="https://th.bing.com/th/id/OIP.jhEI1zD6kr6E5X2Ylfzc3gHaEK?w=289&h=180&c=7&r=0&o=5&dpr=1.3&pid=1.7"
+                    alt="Renewable_Energy_Introduction" />
+            </div>
+        </section>
+
+        <section id="background">
+            <h2>Background and Motivation</h2>
+            <p>
+                The OECD provides indicators to track renewable energy adoption across member countries, including environmental
+                policies, government spending, research and development activities, and broadband access. This project visualizes key
+                renewable energy indicators in selected OECD countries from 2015 to 2024, helping stakeholders understand the current
+                state of renewable energy initiatives and their impact on environmental sustainability.
+            </p>
+        </section>
+
+        <section id="objectives">
+            <h2>Project Objectives</h2>
+            <div class="objectives">
+                <div class="objective">
+                    <strong>Identify Key Indicators:</strong>
+                    <p>Select relevant OECD indicators that align with renewable energy themes, including environmental
+                        policies, government financial metrics, research and development efforts, and broadband access.
+                    </p>
+                </div>
+                <div class="objective">
+                    <strong>Data Visualization:</strong>
+                    <p>Create visual representations of the selected data to illustrate trends in renewable energy
+                        adoption across the specified countries over the designated time period.</p>
+                </div>
+                <div class="objective">
+                    <strong>Analysis and Insights:</strong>
+                    <p>Analyze the visualized data to derive insights regarding the effectiveness of different policies
+                        and investments in promoting renewable energy.</p>
+                </div>
+                <div class="objective">
+                    <strong>Support Decision-Making:</strong>
+                    <p>Provide stakeholders with actionable insights that can inform policy decisions and investment
+                        strategies aimed at enhancing renewable energy uptake.</p>
+                </div>
+                <div class="objective">
+                    <strong>Raise Awareness:</strong>
+                    <p>Increase awareness of the importance of transitioning to renewable energy sources among
+                        policymakers, businesses, and the public.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>Acknowledgement:<br>
+            <a href="https://www.nytimes.com/2022/12/06/climate/iea-renewable-energy-coal.html">New York Times | </a>
+            <a href="https://www.w3schools.com/css/default.asp">W3Schools | </a>
+            </p>
+            <p>&copy; 2024 Renewable Energy Project</p>
+        </footer>
+    </main>
+</body>
+
+</html>

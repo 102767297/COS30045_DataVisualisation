@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Data Visualisation" />
+	<meta name="keywords" content="HTML, CSS, D3" />
+	<meta name="author" content="Lee Jia Wei" />
+
+	<title>East Asian Countries Development Indicators</title>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/chart.css">
+	<script src="./js/index.js"></script>
+</head>
+
+<body>
+	<header class="headerindex">
+		<h1>OECD Renewable Energy Project Overview</h1>
+		<button class="toggle-btn" onclick="toggleSidebar()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-sidebar"
+				viewBox="0 0 16 16">
+				<path
+					d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
+			</svg>
+		</button>
+	</header>
+
+	<nav>
+		<h2>Navigation</h2>
+		<a href="./index.html#introduction">Introduction</a>
+		<a href="./index.html#background">Background and Motivation</a>
+		<a href="./index.html#objectives">Project Objective</a>
+		<a href="chart.html">East Asia Development Indicators</a>
+		<div class="dropdown">
+			<span class="dropdown-btn">East Asia Researcher</span>
+			<div class="dropdown-content">
+				<a href="./Map_Research.html">Researcher</a>
+				<a href="./Map_Government.html">Government Researcher</a>
+				<a href="./compare.html">Compare (Researcher & Government)</a>
+			</div>
+		</div>
+		<a href="./index.html#conclusion">Conclusion</a>
+	</nav>
+
+	<div class="overlay" onclick="toggleSidebar()"></div>
+
+	<main>
+		<div id="chart" class="chart-container"></div>
+		<div id="lineChart" class="chart-container"></div>
+
+		<div class="analysis-container">
+			<h2 id="analysis-east-asian-development-indicators" class="main-title">Analysis: East Asian Development Indicators</h2>
+
+			<div class="key-findings">
+				<h3 id="key-findings" class="section-title">Key Findings</h3>
+				<ul class="section-list">
+					<li class="section-list-item">
+						<strong>Leading Economies:</strong>
+						Korea and Japan demonstrate the highest
+						overall development scores, with cumulative values approaching 400
+						units across all indicators.
+					</li>
+					<li class="section-list-item">
+						<strong>Digital Infrastructure:</strong> 
+						Japan and Korea show substantial
+						investment in broadband access, reflecting their advanced digital
+						infrastructure.
+					</li>
+					<li class="section-list-item">
+						<strong>Environmental Commitment:</strong> 
+						All countries maintain consistent
+						environmental policy implementation, showing regional commitment to
+						sustainability.
+					</li>
+				</ul>
+			</div>
+
+			<div class="detailed-analysis">
+				<h3 id="regional-patterns" class="section-title">Regional Patterns</h3>
+
+				<div class="grid-layout">
+						<div class="grid-item">
+							<h4 id="developed-economies" class="subsection-title">Developed Economies</h4>
+							<p class="subsection-item">Japan and Korea showcase comprehensive development across all
+							indicators, with strong government involvement and technological
+							infrastructure.</p>
+						</div>
+
+						<div class="grid-item">
+							<h4 id="emerging-markets" class="subsection-title">Emerging Markets</h4>
+							<p class="subsection-item">China and Taipei demonstrate balanced development profiles, with
+							significant investments in R&D and environmental initiatives.</p>
+						</div>
+
+						<div class="grid-item">
+							<h4 id="developing-regions" class="subsection-title">Developing Regions</h4>
+							<p class="subsection-item">Mongolia shows emerging development patterns with focused growth in
+							specific sectors, indicating potential for future expansion.</p>
+						</div>
+				</div>
+			</div>
+
+			<div class="methodology">
+				<h3 id="methodology-note" class="section-title">Methodology Note</h3>
+				<p class="subsection-item">This analysis is based on a comprehensive dataset measuring five key
+				development indicators: Energy, Environmental Policy, R&D, Broadband
+				Access, and General Government involvement. The visualization employs a
+				stacked bar chart to facilitate cross-country comparisons.
+			</p>
+			</div>
+		</div>
+	</main>
+
+	<script src="./js/chart.js"></script>
+</body>
+
+</html>
