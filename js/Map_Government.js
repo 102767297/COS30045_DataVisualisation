@@ -57,10 +57,10 @@ d3.json("data/Asia_GEO.json").then(function (mapData) {
             .attr("class", "tooltip")
             .style("opacity", 0);
 
-        const colorScaleNational = d3.scaleSequential(d3.interpolateBlues)
+        const colorScaleNational = d3.scaleSequential(d3.interpolateCividis)
             .domain([0, d3.max(data, d => d.INDICATOR === "GOVRESEARCHER" && d.MEASURE === "PC_NATIONAL" ? +d.OBS_VALUE : 0)]);
 
-        const colorScaleHeadcount = d3.scaleSequential(d3.interpolateReds)
+        const colorScaleHeadcount = d3.scaleSequential(d3.interpolateCividis)
             .domain([0, d3.max(data, d => d.INDICATOR === "GOVRESEARCHER" && d.MEASURE === "HEADCOUNT" ? +d.OBS_VALUE : 0)]);
 
         const updateMap = (measure, year) => {
@@ -107,7 +107,7 @@ d3.json("data/Asia_GEO.json").then(function (mapData) {
                     const value = dataMap.get(countryCode) || 0;
 
                     tooltip.transition().duration(200).style("opacity", 1);
-                    tooltip.html(`${d.properties.name}<br/>${measure}: ${value}`)
+                    tooltip.html(`${d.properties.name}<br/>${measure}: ${value.toFixed(2)}`)
                         .style("left", (event.pageX + 5) + "px")
                         .style("top", (event.pageY - 28) + "px");
                 })

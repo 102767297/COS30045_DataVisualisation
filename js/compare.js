@@ -1,9 +1,9 @@
 const svg = d3.select("#chart"),
-    margin = { top: 40, right: 60, bottom: 60, left: 70 },
+    margin = { top: 40, right: 60, bottom: 60, left: 80 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
-// Add country configuration
+// Country configuration
 const countries = [
     { id: 'TWN', name: 'Taiwan' },
     { id: 'JPN', name: 'Japan' },
@@ -18,17 +18,15 @@ countries.forEach(country => {
     const filterItem = locationFilters
         .append("div")
         .attr("class", "filter-item")
-        .style("padding-right", "10px")
         .style("padding", "10px");
-        //.style("padding-right", "10px");
-    
+
     filterItem.append("input")
         .attr("type", "checkbox")
         .attr("id", `country-${country.id}`)
         .attr("value", country.id)
-        .attr("checked", true)  // All countries selected by default
+        .attr("checked", true) // All countries selected by default
         .on("change", () => updateChart(getCurrentMeasurement()));
-    
+
     filterItem.append("label")
         .attr("for", `country-${country.id}`)
         .text(country.name);
@@ -41,8 +39,8 @@ const x = d3.scaleLinear().range([0, width]);
 const y = d3.scaleLinear().range([height, 0]);
 
 const color = d3.scaleOrdinal()
-    .range(['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd',
-        '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf']);
+    .domain(countries.map(c => c.id))
+    .range(['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd']);
 
 const tooltip = d3.select("#tooltip");
 
@@ -56,61 +54,60 @@ svg.call(zoom);
 function zoomed(event) {
     const transform = event.transform;
     g.attr("transform", transform);
-    g.selectAll("circle").attr("r", 4 / transform.k);
+    //g.selectAll("circle").attr("r", 4 / transform.k);
     g.selectAll(".axis-label").attr("font-size", 14 / transform.k);
 }
 
-// Function to get selected countries
+// Get selected countries
 function getSelectedCountries() {
     return countries
         .filter(country => d3.select(`#country-${country.id}`).property("checked"))
         .map(country => country.id);
 }
 
-// Function to get current measurement
+// Get current measurement
 function getCurrentMeasurement() {
     return d3.select("#measurement-select").property("value") || "PC_RESEARCHER";
 }
 
-const measurementLabels = {
-    'PC_RESEARCHER': 'Percentage of Researchers',
-    'PC_NATIONAL': 'Percentage of National Total',
-    'HEADCOUNT': 'Number of Researchers',
-    '1000EMPLOYED': 'Researchers per 1000 Employed'
-};
-
+// Update the chart with new data
 const updateChart = (measurement) => {
     d3.csv("data/cleaned/New_OECD_RenewableEnergy.csv").then(data => {
+        console.log("Loaded Data:", data);  // Log to check if data is loaded correctly
         g.selectAll("*").remove();
 
         const selectedCountries = getSelectedCountries();
 
-        // 过滤数据
+        // Filter and aggregate data
         const filteredData = data.filter(d =>
             (d.INDICATOR === 'RESEARCHER' || d.INDICATOR === 'GOVRESEARCHER') &&
             selectedCountries.includes(d.LOCATION) &&
             (d.TIME_PERIOD >= 2015 && d.TIME_PERIOD <= 2024) &&
-            d.MEASURE === measurement
+            d.MEASURE === measurement &&
+            !isNaN(+d.OBS_VALUE) // Ensure OBS_VALUE is a valid number
         );
 
-        // 汇总相同指标的数据
+        // Check the filtered data
+        console.log("Filtered Data:", filteredData);
+
         const aggregatedData = d3.rollups(
             filteredData,
-            v => d3.sum(v, d => +d.OBS_VALUE), // 对 OBS_VALUE 求和
-            d => d.LOCATION,                  // 按 LOCATION 分组
-            d => d.TIME_PERIOD                // 按 TIME_PERIOD 分组
+            v => d3.sum(v, d => +d.OBS_VALUE),
+            d => d.LOCATION,
+            d => d.TIME_PERIOD
         );
 
-        // 将数据展平成适合绘制的格式
-        const flattenedData = aggregatedData.flatMap(([location, years]) => 
+        const flattenedData = aggregatedData.flatMap(([location, years]) =>
             years.map(([year, obs_value]) => ({
                 LOCATION: location,
                 TIME_PERIOD: year,
-                OBS_VALUE: obs_value
+                OBS_VALUE: +obs_value // Ensure it's a number
             }))
         );
 
-        // 处理空数据
+        // Check the flattened data
+        console.log("Flattened Data:", flattenedData);
+
         if (flattenedData.length === 0) {
             g.append("text")
                 .attr("x", width / 2)
@@ -122,39 +119,41 @@ const updateChart = (measurement) => {
 
         const uniqueYears = [...new Set(flattenedData.map(d => +d.TIME_PERIOD))];
 
-        x.domain(d3.extent(uniqueYears));
+        x.domain([d3.min(uniqueYears), d3.max(uniqueYears)]);
         y.domain([0, d3.max(flattenedData, d => +d.OBS_VALUE) * 1.1]);
 
-        // 添加 X 轴
+        // Add X axis
         g.append("g")
             .attr("class", "x-axis")
             .attr("transform", `translate(0,${height})`)
             .call(d3.axisBottom(x)
-                .tickFormat(d3.format("d")));
+                .tickValues(uniqueYears) // Use only unique years
+                .tickFormat(d3.format("d")) // Format years as integers
+            );
 
-        // 添加 Y 轴
+        // Add Y axis
         g.append("g")
             .attr("class", "y-axis")
             .call(d3.axisLeft(y));
 
-        // 添加 X 轴标签
+        // X axis label
         g.append("text")
             .attr("class", "axis-label")
             .attr("text-anchor", "middle")
             .attr("x", width / 2)
-            .attr("y", height + 40) // 调整标签距离 X 轴的距离
+            .attr("y", height + 40)
             .text("Year");
 
-        // 添加 Y 轴标签
+        // Y axis label
         g.append("text")
             .attr("class", "axis-label")
             .attr("text-anchor", "middle")
             .attr("transform", `rotate(-90)`)
-            .attr("y", -52) // 调整标签远离 Y 轴的距离
+            .attr("y", -52)
             .attr("x", -height / 2)
-            .text(measurementLabels[measurement]);
+            .text("Percentage of Researchers"); // Use the correct label
 
-        // 绘制每个国家的点
+        // Draw points for each country
         selectedCountries.forEach(country => {
             const countryData = flattenedData.filter(d => d.LOCATION === country);
 
@@ -172,7 +171,7 @@ const updateChart = (measurement) => {
                     tooltip.html(`
                         <strong>${countries.find(c => c.id === country).name}</strong><br>
                         Year: ${d.TIME_PERIOD}<br>
-                        ${measurementLabels[measurement]}: ${d.OBS_VALUE}
+                        Percentage of Researchers: ${d.OBS_VALUE.toFixed(2)}
                     `)
                         .style("left", (event.pageX + 5) + "px")
                         .style("top", (event.pageY - 28) + "px");
@@ -182,12 +181,11 @@ const updateChart = (measurement) => {
                 });
         });
 
-        // 创建图例
+        // Create legend
         const legend = d3.select("#legend");
         legend.selectAll("*").remove();
         selectedCountries.forEach(country => {
-            const legendItem = legend.append("div")
-                .attr("class", "legend-item");
+            const legendItem = legend.append("div").attr("class", "legend-item");
 
             legendItem.append("div")
                 .attr("class", "legend-color-box")
@@ -195,14 +193,15 @@ const updateChart = (measurement) => {
 
             legendItem.append("span").text(countries.find(c => c.id === country).name);
         });
+    }).catch(error => {
+        console.error("Error loading or processing CSV:", error);
     });
 };
-
 
 // Initial update
 updateChart(getCurrentMeasurement());
 
-// Update chart when measurement changes
+// Update chart on measurement change
 d3.select("#measurement-select").on("change", () => {
     updateChart(getCurrentMeasurement());
 });

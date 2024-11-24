@@ -23,6 +23,22 @@ button:hover {
   padding: 20px;
   margin: 20px auto;
   position: relative;
+  justify-content: center;
+  justify-items: center;
+}
+
+.chart-container-renewable {
+  width: 80%;
+  height: auto;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin: 20px auto;
+  position: relative;
+  justify-content: center;
+  justify-items: center;
 }
 
 .controls {

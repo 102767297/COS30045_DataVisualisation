@@ -93,10 +93,10 @@ d3.json("data/Asia_GEO.json").then(function (mapData) {
         d3.select("#highestCountry").text(`Highest Country: ${highestCountry}`);
         d3.select("#highestValue").text(`Value: ${highestValue.toFixed(2)}`);
 
-        // Define color scale
-        const colorScale = d3.scaleLinear()
-            .domain([minValue, maxValue])
-            .range(["#66c2a5", "#00441b"]); // Light to dark green
+        // Define color scale (colorblind-friendly)
+        const colorScale = d3.scaleSequential(d3.interpolateCividis) // Or d3.interpolateViridis
+            .domain([minValue, maxValue]); // Define the data range
+
 
         // Update legend
         updateLegend(minValue, maxValue, colorScale);
@@ -120,7 +120,7 @@ d3.json("data/Asia_GEO.json").then(function (mapData) {
                 const value = dataMap.get(countryCode) || 0;
 
                 tooltip.transition().duration(200).style("opacity", 1);
-                tooltip.html(`${d.properties.name}<br/>${measure}: ${value}`)
+                tooltip.html(`${d.properties.name}<br/>${measure}: ${value.toFixed(2)}`)
                     .style("left", (event.pageX + 5) + "px")
                     .style("top", (event.pageY - 28) + "px");
             })

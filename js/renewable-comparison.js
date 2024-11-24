@@ -2,8 +2,8 @@
 function createRenewableEnergyChart() {
     // Set up margins and dimensions
     const margin = { top: 100, right: 160, bottom: 200, left: 80 };
-    const width = 1200 - margin.left - margin.right;
-    const height = 900 - margin.top - margin.bottom;
+    const width = 1150 - margin.left - margin.right;
+    const height = 1000 - margin.top - margin.bottom;
 
     // Clear existing chart
     d3.select('#consumptionProductionChart').html('');
@@ -63,8 +63,8 @@ function createRenewableEnergyChart() {
             const chartHeight = height / 3 - 20; // Three rows total, accounting for spacing
 
             countries.forEach((country, i) => {
-                const xPos = (i % 2) * (chartWidth + 20); // Space between columns
-                const yPos = Math.floor(i / 2) * (chartHeight + 40); // Increased vertical spacing
+                const xPos = (i % 2) * (chartWidth + 60); // Space between columns
+                const yPos = Math.floor(i / 2) * (chartHeight + 60); // Increased vertical spacing
 
                 // Get all data for this country
                 const countryData = combinedData.filter(d => d.country === country);
