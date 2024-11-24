@@ -25,41 +25,18 @@
             </button>
         </header>
         
-        <nav>
-            <h2>Navigation</h2>
-            <a href="./index.html#introduction">Introduction</a>
-            <a href="./index.html#background">Background and Motivation</a>
-            <a href="./index.html#objectives">Project Objective</a>
-            <a href="chart.html">East Asia Development Indicators</a>
-            <div class="dropdown">
-                <span class="dropdown-btn">East Asia Researcher</span>
-                <div class="dropdown-content">
-                    <a href="./Map_Research.html">Researcher</a>
-                    <a href="./Map_Government.html">Government Researcher</a>
-                    <a href="./compare.html">Compare (Researcher & Government)</a>
-                </div>
-            </div>
-            <a href="./index.html#conclusion">Conclusion</a>
-        </nav>
+        <!-- The actual nav element is replaced by JavaScript and loading nav.html-->
+	    <nav></nav>
         
         <div class="overlay" onclick="toggleSidebar()"></div>
         <main>
             <h1>East Asia Map - Government Researcher</h1>
             
-            <!-- Dropdown to select year -->
-            <label for="yearSelect_Gov">Select Year:</label>
-            <select id="yearSelect_Gov">
-                <option value="2015">2015</option>
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-                <option value="2020">2020</option>
-                <option value="2021">2021</option>
-                <option value="2022">2022</option>
-                <option value="2023">2023</option>
-                <option value="2024">2024</option>
-            </select>
+            <!-- Slider to select year -->
+            <div id="year-slider-container">
+                <label for="year-slider">Year: <span id="year-label">2015</span></label>
+                <input type="range" id="year-slider" min="2015" max="2022" value="2015" step="1">
+            </div>
             
             <!-- Buttons to select MEASURE -->
             <div>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Data Visualisation" />
+	<meta name="keywords" content="HTML, CSS, D3" />
+	<meta name="author" content="Lee Jia Wei" />
+
+	<title>Renewable Energy Trends & Comparison</title>
+	<script src="https://d3js.org/d3.v6.min.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+	<link rel="stylesheet" href="./css/chart.css">
+	<script src="./js/index.js"></script>
+</head>
+
+<body>
+	<header class="headerindex">
+		<h1>OECD Renewable Energy Project Overview</h1>
+		<button class="toggle-btn" onclick="toggleSidebar()">
+			<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-layout-sidebar"
+				viewBox="0 0 16 16">
+				<path
+					d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
+			</svg>
+		</button>
+	</header>
+
+	<!-- The actual nav element is replaced by JavaScript and loading nav.html-->
+	<nav></nav>
+
+	<div class="overlay" onclick="toggleSidebar()"></div>
+
+	<main>
+    <div class="chart-container">
+			<div id="chart"></div>
+		</div>
+
+		<!-- Analysis Section -->
+		<div class="analysis-container">
+			<div class="analysis-section">
+				<h2>Renewable Energy Trends in East Asia (2015-2021)</h2>
+				
+				<div class="key-findings">
+						<h3 class="section-title">Key Findings</h3>
+						<ul class="section-list">
+							<li class="section-list-item">China leads in renewable energy growth with a consistent upward trajectory, reaching nearly 15% by 2021</li>
+							<li class="section-list-item">Japan shows significant acceleration post-2019, achieving over 11% renewable energy share</li>
+							<li class="section-list-item">Korea and Taiwan demonstrate slower but steady growth, both surpassing 3% by 2021</li>
+						</ul>
+				</div>
+
+				<div class="key-stat">
+					<h3 class="section-title">Regional Analysis</h3>
+					<p>The data reveals distinct patterns in East Asia's renewable energy transition:</p>
+					<ul class="section-list">
+						<li class="section-list-item"><strong>China's Leadership:</strong> Maintained the highest share and most consistent growth rate</li>
+						<li class="section-list-item"><strong>Japan's Transformation:</strong> Showed remarkable acceleration after 2019, possibly due to policy changes</li>
+						<li class="section-list-item"><strong>Emerging Markets:</strong> Korea and Taiwan show similar growth patterns but at different scales</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<div class="chart-container">
+			<div id="consumptionProductionChart"></div>
+		</div>
+
+		<!-- Analysis Section -->
+		<div class="analysis-container">
+			<div class="analysis-section">
+				<h2>Renewable Energy Consumption and Production Analysis in East Asia (2015-2021)</h2>
+				
+				<div class="key-findings">
+					<h3 class="section-title">Key Findings</h3>
+					<ul class="section-list">
+						<li class="section-list-item"><strong>China's Dominance:</strong> China leads in both production and consumption, with nearly perfect alignment between the two. Its renewable energy market shows consistent growth, reaching up to ~2500 TWh by 2021.</li>
+						<li class="section-list-item"><strong>Japan's Steady Progress:</strong> Japan maintains a production surplus, slightly exceeding consumption, indicating potential for export. Its market size ranges from 150-200 TWh, with steady growth and some acceleration post-2019.</li>
+						<li class="section-list-item"><strong>Korea's Divergence:</strong> Korea shows increasing separation between production (growing rapidly from 30 TWh to 55 TWh) and consumption (moderate growth from 20 TWh to 45 TWh), suggesting potential for export.</li>
+						<li class="section-list-item"><strong>Taiwan's Growth:</strong> Taiwan’s market has accelerated since 2018, with balanced growth in both consumption and production, staying in the 10-15 TWh range.</li>
+						<li class="section-list-item"><strong>Mongolia's Emergence:</strong> Starting from near-zero levels, Mongolia demonstrates the most dramatic growth pattern, focusing primarily on production with limited consumption data available.</li>
+					</ul>
+				</div>
+
+				<div class="key-stat">
+					<h3 class="section-title">Regional Analysis</h3>
+					<p>The analysis of the renewable energy landscape in East Asia reveals several distinct trends:</p>
+					<ul class="section-list">
+						<li class="section-list-item"><strong>Scale Disparity:</strong> China remains the dominant player, with a market scale approximately 10 times larger than Japan's. Korea, Taiwan, and Mongolia show progressively smaller scales.</li>
+						<li class="section-list-item"><strong>Growth Trajectories:</strong> All countries exhibit positive growth but at different paces: China shows steady growth, Japan experiences consistent progress with acceleration after 2019, Korea has an increasing gap between production and consumption, Taiwan sees post-2018 acceleration, and Mongolia experiences exponential growth.</li>
+						<li class="section-list-item"><strong>Market Maturity:</strong> More mature markets (China and Japan) show closer alignment between production and consumption, while emerging markets (Korea and Mongolia) have greater variability, indicating export potential. Taiwan's market is well-balanced between consumption and production.</li>
+						<li class="section-list-item"><strong>Regional Integration:</strong> The gaps between production and consumption suggest potential for international trade, with Korea and Mongolia likely to engage in export activities, while China and Japan focus more on domestic utilization.</li>
+					</ul>
+				</div>
+
+				<div class="key-stat">
+					<h3 class="section-title">Production-Consumption Patterns</h3>
+					<ul class="section-list">
+						<li class="section-list-item"><strong>China:</strong> Shows perfect alignment between production and consumption, suggesting efficient domestic utilization.</li>
+						<li class="section-list-item"><strong>Japan:</strong> Has a slight production surplus, indicating export potential.</li>
+						<li class="section-list-item"><strong>Korea:</strong> Displays a growing divergence between production and consumption, with production growing faster, indicating increasing export capacity.</li>
+					</ul>
+				</div>
+
+				<div class="key-stat">
+					<h3 class="section-title">Volume Analysis</h3>
+					<p>The scale and growth of renewable energy markets in East Asia vary significantly:</p>
+					<ul class="section-list">
+						<li class="section-list-item"><strong>Large-Scale Markets:</strong> China and Japan dominate the regional volume, with China’s production reaching 1500-2500 TWh and Japan's at 150-200 TWh.</li>
+						<li class="section-list-item"><strong>Mid-Scale Markets:</strong> Korea shows moderate volumes, growing from 30 TWh to 55 TWh.</li>
+						<li class="section-list-item"><strong>Emerging Markets:</strong> Taiwan grows steadily in the 10-15 TWh range, while Mongolia shows rapid production growth starting from near-zero levels in 2015-2017.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+    <script src="./js/renewable-trends.js"></script>
+		<script src="./js/renewable-comparison.js"></script>
+	</main>
+</body>
+</html>

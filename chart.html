@@ -27,93 +27,65 @@
 		</button>
 	</header>
 
-	<nav>
-		<h2>Navigation</h2>
-		<a href="./index.html#introduction">Introduction</a>
-		<a href="./index.html#background">Background and Motivation</a>
-		<a href="./index.html#objectives">Project Objective</a>
-		<a href="chart.html">East Asia Development Indicators</a>
-		<div class="dropdown">
-			<span class="dropdown-btn">East Asia Researcher</span>
-			<div class="dropdown-content">
-				<a href="./Map_Research.html">Researcher</a>
-				<a href="./Map_Government.html">Government Researcher</a>
-				<a href="./compare.html">Compare (Researcher & Government)</a>
-			</div>
-		</div>
-		<a href="./index.html#conclusion">Conclusion</a>
-	</nav>
+	<!-- The actual nav element is replaced by JavaScript and loading nav.html-->
+	<nav></nav>
 
 	<div class="overlay" onclick="toggleSidebar()"></div>
 
 	<main>
-		<div id="chart" class="chart-container"></div>
+		<div class="chart-container">
+			<div id="year-slider-container">
+				<label for="year-slider">Year: <span id="year-label">2015</span></label>
+				<input type="range" id="year-slider" min="2015" max="2022" value="2015" step="1">
+			</div>
+			<div id="chart"></div>
+		</div>
 		<div id="lineChart" class="chart-container"></div>
 
+		<!-- Analysis Section -->
 		<div class="analysis-container">
-			<h2 id="analysis-east-asian-development-indicators" class="main-title">Analysis: East Asian Development Indicators</h2>
-
+			<h2 class="main-title">Analysis: East Asian Development Indicators</h2>
+		
 			<div class="key-findings">
-				<h3 id="key-findings" class="section-title">Key Findings</h3>
+				<h3 class="section-title">Key Findings</h3>
 				<ul class="section-list">
-					<li class="section-list-item">
-						<strong>Leading Economies:</strong>
-						Korea and Japan demonstrate the highest
-						overall development scores, with cumulative values approaching 400
-						units across all indicators.
-					</li>
-					<li class="section-list-item">
-						<strong>Digital Infrastructure:</strong> 
-						Japan and Korea show substantial
-						investment in broadband access, reflecting their advanced digital
-						infrastructure.
-					</li>
-					<li class="section-list-item">
-						<strong>Environmental Commitment:</strong> 
-						All countries maintain consistent
-						environmental policy implementation, showing regional commitment to
-						sustainability.
-					</li>
+					<li class="section-list-item"><strong>Dynamic Development Trajectories (2015-2022):</strong> The visualization tracks development patterns across East Asian economies over an 8-year period, revealing evolving regional dynamics through an interactive year slider.</li>
+					<li class="section-list-item"><strong>Leading Economies' Evolution:</strong> Japan and Korea maintain regional leadership positions, demonstrating consistent strength in digital infrastructure and R&D investments while maintaining high environmental policy implementation scores.</li>
+					<li class="section-list-item"><strong>Digital Infrastructure:</strong> Broadband access shows significant improvements across all countries, with Japan and Korea leading while other nations steadily close the digital divide.</li>
+					<li class="section-list-item"><strong>Environmental Commitment:</strong> All countries display increasing commitment to environmental policies, reflecting growing regional focus on sustainable development with steady improvement in policy implementation scores.</li>
 				</ul>
 			</div>
-
+		
 			<div class="detailed-analysis">
-				<h3 id="regional-patterns" class="section-title">Regional Patterns</h3>
-
+				<h3 class="section-title">Regional Patterns</h3>
+				
 				<div class="grid-layout">
-						<div class="grid-item">
-							<h4 id="developed-economies" class="subsection-title">Developed Economies</h4>
-							<p class="subsection-item">Japan and Korea showcase comprehensive development across all
-							indicators, with strong government involvement and technological
-							infrastructure.</p>
-						</div>
-
-						<div class="grid-item">
-							<h4 id="emerging-markets" class="subsection-title">Emerging Markets</h4>
-							<p class="subsection-item">China and Taipei demonstrate balanced development profiles, with
-							significant investments in R&D and environmental initiatives.</p>
-						</div>
-
-						<div class="grid-item">
-							<h4 id="developing-regions" class="subsection-title">Developing Regions</h4>
-							<p class="subsection-item">Mongolia shows emerging development patterns with focused growth in
-							specific sectors, indicating potential for future expansion.</p>
-						</div>
+					<div class="grid-item">
+						<h4 class="subsection-title">Developed Economies</h4>
+						<p class="subsection-item">Japan and Korea maintain comprehensive development across all indicators, showing stable government involvement and consistent technological advancement. They demonstrate resilient development patterns through various global challenges.</p>
+					</div>
+		
+					<div class="grid-item">
+						<h4 class="subsection-title">Emerging Markets</h4>
+						<p class="subsection-item">China and Taipei display increasingly balanced development profiles, showing significant growth in R&D investments and placing greater emphasis on environmental initiatives in their development agenda.</p>
+					</div>
+		
+					<div class="grid-item">
+						<h4 class="subsection-title">Developing Regions</h4>
+						<p class="subsection-item">Mongolia exhibits evolving development patterns with focused growth in specific sectors, demonstrating potential for continued expansion and development across indicators.</p>
+					</div>
 				</div>
 			</div>
-
+		
 			<div class="methodology">
-				<h3 id="methodology-note" class="section-title">Methodology Note</h3>
-				<p class="subsection-item">This analysis is based on a comprehensive dataset measuring five key
-				development indicators: Energy, Environmental Policy, R&D, Broadband
-				Access, and General Government involvement. The visualization employs a
-				stacked bar chart to facilitate cross-country comparisons.
-			</p>
+				<h3 class="section-title">Methodology Note</h3>
+				<p class="subsection-item">This analysis leverages an interactive visualization tool featuring a comprehensive dataset measuring five key development indicators: Energy, Environmental Policy, R&D, Broadband Access, and General Government involvement. The visualization employs dynamic updates through a year slider (2015-2022) and stacked bar chart format to enable both temporal and cross-country comparisons. This approach facilitates detailed examination of specific time points while allowing for both aggregate and indicator-specific analysis.</p>
 			</div>
 		</div>
 	</main>
 
 	<script src="./js/chart.js"></script>
+	<script src="./js/index.js"></script>
 </body>
 
 </html>

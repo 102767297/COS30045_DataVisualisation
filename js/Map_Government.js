@@ -17,7 +17,7 @@ const countryCodes = {
 let currentMeasure = "PC_NATIONAL";
 let currentYear = 2015;
 
-d3.json("Asia_GEO.json").then(function (mapData) {
+d3.json("data/Asia_GEO.json").then(function (mapData) {
     let filteredFeatures = mapData.features.filter(feature =>
         ["China", "Mongolia", "Japan", "South Korea", "North Korea", "Taiwan"].includes(feature.properties.name));
 
@@ -52,15 +52,15 @@ d3.json("Asia_GEO.json").then(function (mapData) {
 
     mapData.features = filteredFeatures;
 
-    d3.csv("New_OECD_RenewableEnergy.csv").then(function (data) {
+    d3.csv("data/cleaned/New_OECD_RenewableEnergy.csv").then(function (data) {
         const tooltip = d3.select("body").append("div")
             .attr("class", "tooltip")
             .style("opacity", 0);
 
-        const colorScaleNational = d3.scaleSequential(d3.interpolateCividis)
+        const colorScaleNational = d3.scaleSequential(d3.interpolateBlues)
             .domain([0, d3.max(data, d => d.INDICATOR === "GOVRESEARCHER" && d.MEASURE === "PC_NATIONAL" ? +d.OBS_VALUE : 0)]);
 
-        const colorScaleHeadcount = d3.scaleSequential(d3.interpolateInferno)
+        const colorScaleHeadcount = d3.scaleSequential(d3.interpolateReds)
             .domain([0, d3.max(data, d => d.INDICATOR === "GOVRESEARCHER" && d.MEASURE === "HEADCOUNT" ? +d.OBS_VALUE : 0)]);
 
         const updateMap = (measure, year) => {
@@ -89,7 +89,7 @@ d3.json("Asia_GEO.json").then(function (mapData) {
 
             // Update DOM elements to display highest country and value
             d3.select("#highestCountry").text(`Highest Country: ${highestCountry}`);
-            d3.select("#highestValue").text(`Value: ${highestValue}`);
+            d3.select("#highestValue").text(`Value: ${highestValue.toFixed(2)}`);
 
             svg.selectAll("path")
                 .data(mapData.features)
@@ -161,12 +161,18 @@ d3.json("Asia_GEO.json").then(function (mapData) {
 
         updateMap(currentMeasure, currentYear);
 
-        d3.select("#yearSelect_Gov").on("change", function () {
+        // Slider event listener
+        const yearSlider = d3.select("#year-slider");
+        const yearLabel = d3.select("#year-label");
+
+        yearSlider.on("input", function() {
             currentYear = +this.value;
-            d3.select("#yearDisplay").text(currentYear); // 更新年份显示
+            yearLabel.text(currentYear);
+            d3.select("#yearDisplay").text(currentYear);
             updateMap(currentMeasure, currentYear);
         });
 
+        // Measure buttons event listeners
         d3.select("#pcResearcherBtn").on("click", function () {
             currentMeasure = "PC_NATIONAL";
             updateMap(currentMeasure, currentYear);

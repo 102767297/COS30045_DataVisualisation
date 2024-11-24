@@ -23,22 +23,8 @@
         </button>
     </header>
 
-    <nav>
-        <h2>Navigation</h2>
-        <a href="#introduction">Introduction</a>
-        <a href="#background">Background and Motivation</a>
-        <a href="#objectives">Project Objective</a>
-        <a href="chart.html">East Asia Development Indicators</a>
-        <div class="dropdown">
-            <span class="dropdown-btn">East Asia Researcher</span>
-            <div class="dropdown-content">
-                <a href="./Map_Research.html">Researcher</a>
-                <a href="./Map_Government.html">Government Researcher</a>
-                <a href="./compare.html">Compare (Researcher & Government)</a>
-            </div>
-        </div>
-        <a href="#conclusion">Conclusion</a>
-    </nav>
+    <!-- The actual nav element is replaced by JavaScript and loading nav.html-->
+	<nav></nav>
 
     <div class="overlay" onclick="toggleSidebar()"></div>
 
@@ -98,6 +84,23 @@
                         policymakers, businesses, and the public.</p>
                 </div>
             </div>
+        </section>
+
+        <!-- New Section for Data Source -->
+        <section id="data-source">
+            <h2>Data Source</h2>
+            <p>The data for this project is sourced from the following resources:</p>
+            <ul class="section-list">
+                <li class="section-list-item">
+                    <a href="https://www.oecd.org/en/data/indicators/renewable-energy.html" target="_blank">OECD Renewable Energy</a>
+                </li>
+                <li class="section-list-item">
+                    <a href="https://data-explorer.oecd.org/vis?lc=en&df[ds]=DisseminateArchiveDMZ&df[id]=DF_DP_LIVE&df[ag]=OECD&av=true&pd=2015%2C2024&dq=CHN%2BMAC%2BHKG%2BTWN%2BMNG%2BJPN%2BKOR.G_ENERGY%2BPRYENRGSUPPLY%2BRENEWABLE%2BPATENT_ENV%2BTAXENV%2BRESEARCHER%2BGOVRESEARCHER%2BFIXWIRED%2BWIRELESSWIRED%2BGGNLEND%2BGGREV%2BGGEXP%2BGGEXPDEST%2BGGDEBT%2BGGWEALTH.POL%2BRES%2BCABLE%2BDEF%2BDSL%2BECOAFF%2BEDU%2BENRG%2BENVPROT%2BFIBRE%2BGRALPUBSER%2BHEALTH%2BHOUCOMM%2BINDIVIDUAL%2BPUBORD%2BRECULTREL%2BSOCPROT%2BSOCIETY%2BTOT%2BTRANSPORT%2BWOMEN.PC_PRYENRGSUPPLY%2B1000EMPLOYED%2B100HAB%2BTHND_USD_CAP%2BHEADCOUNT%2BNBR%2BPC%2BPC_GDP%2BPC_NATIONAL%2BPC_TOT_TAX%2BPC_RESEARCHER.A&to[TIME_PERIOD]=false&vw=tb&lb=bt" target="_blank">OECD Renewable Energy Statistics Dataset</a>
+                </li>
+                <li class="section-list-item">
+                    <a href="https://www.kaggle.com/datasets/belayethossainds/renewable-energy-world-wide-19652022" target="_blank">Kaggle Renewable Energy Worldwide (1965-2022)</a>
+                </li>
+            </ul>
         </section>
 
         <footer>

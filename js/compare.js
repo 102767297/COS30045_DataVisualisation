@@ -80,7 +80,7 @@ const measurementLabels = {
 };
 
 const updateChart = (measurement) => {
-    d3.csv("New_OECD_RenewableEnergy.csv").then(data => {
+    d3.csv("data/cleaned/New_OECD_RenewableEnergy.csv").then(data => {
         g.selectAll("*").remove();
 
         const selectedCountries = getSelectedCountries();
