@@ -186,7 +186,7 @@ function createRenewableEnergyChart() {
 
             // Add legend
             const legend = svg.append('g')
-                .attr('transform', `translate(${width - 220}, -80)`);
+                .attr('transform', `translate(${width - 50}, -80)`);
 
             // Legend title
             legend.append('text')

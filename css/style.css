@@ -90,6 +90,19 @@ h2 {
     text-align: center;
 }
 
+#navHeader {
+    color: #e2dede;
+}
+
+/* Section */
+section {
+    background: #FCFFF5;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
 .objectives {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -303,7 +316,7 @@ input[type="range"]::-moz-range-thumb:hover {
 
 #data-source h2 {
     font-size: 24px;
-    color: #333;
+    color: #3E606F;
     margin-bottom: 10px;
     font-family: 'Arial', sans-serif;
 }
