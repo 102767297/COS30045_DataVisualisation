@@ -83,25 +83,18 @@ main {
     display: block;
 }
 
-/* Objectives section */
-section {
-    background: #FCFFF5;
-    padding: 20px;
-    margin: 20px 0;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 h2 {
     color: #3E606F;
     border-bottom: 2px solid #3E606F;
     padding-bottom: 10px;
+    text-align: center;
 }
 
 .objectives {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 20px;
+    margin: 10px;
 }
 
 .objective {
@@ -158,9 +151,9 @@ footer {
 }
 
 .imageintro {
-    width: 300px;
+    width: 1200px;
     /* Set the width of the image */
-    height: auto;
+    height: 700px;
     /* Maintain the aspect ratio */
     border-radius: 8px;
     /* Optional styling */

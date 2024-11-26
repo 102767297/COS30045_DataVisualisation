@@ -3,7 +3,7 @@ body {
 }
 
 .tooltip {
-    position: absolute;
+    position: fixed;
     text-align: center;
     width: auto;
     padding: 5px;

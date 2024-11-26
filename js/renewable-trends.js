@@ -1,7 +1,7 @@
 // Create the visualization
 const margin = { top: 100, right: 150, bottom: 60, left: 100 };
-const width = 1100 - margin.left - margin.right;
-const height = 850 - margin.top - margin.bottom;
+const width = 950 - margin.left - margin.right;
+const height = 750 - margin.top - margin.bottom;
 
 // Create SVG container
 const svg = d3.select('#chart')
