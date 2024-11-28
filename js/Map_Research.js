@@ -89,9 +89,17 @@ d3.json("data/Asia_GEO.json").then(function (mapData) {
             }
         });
 
+        // Format the highest value based on the measure type
+        let formattedHighestValue;
+        if (currentMeasure === "HEADCOUNT") {
+            formattedHighestValue = d3.format(",.0f")(highestValue); // Format with commas and no decimal places
+        } else {
+            formattedHighestValue = highestValue.toFixed(2); // Format with two decimal places
+        }
+
         // Update DOM elements to display highest country and value
         d3.select("#highestCountry").text(`Highest Country: ${highestCountry}`);
-        d3.select("#highestValue").text(`Value: ${highestValue.toFixed(2)}`);
+        d3.select("#highestValue").text(`Value: ${formattedHighestValue}`);
 
         // Define color scale (colorblind-friendly)
         const colorScale = d3.scaleSequential(d3.interpolateCividis) // Or d3.interpolateViridis

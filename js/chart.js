@@ -1,10 +1,10 @@
 const indicators = ['energy', 'environmentalPolicy', 'researchDevelopment', 'broadbandAccess', 'generalGovernment'];
 const indicatorNames = {
-	energy: 'Energy',
+	energy: 'Renewable Energy',
 	environmentalPolicy: 'Environmental Policy',
 	researchDevelopment: 'R&D',
 	broadbandAccess: 'Broadband Access',
-	generalGovernment: 'General Government'
+	generalGovernment: 'Government Funding'
 };
 
 // Using a colorblind-friendly palette

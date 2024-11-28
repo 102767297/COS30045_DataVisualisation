@@ -370,3 +370,8 @@ input[type="range"]::-moz-range-thumb:hover {
         font-size: 14px;
     }
 }
+
+u {
+    text-decoration: underline;
+    text-underline-offset: 4px; /* Adjust the offset value as needed */
+}

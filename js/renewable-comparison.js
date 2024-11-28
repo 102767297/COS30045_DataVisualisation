@@ -1,7 +1,7 @@
 // Create visualization function
 function createRenewableEnergyChart() {
     // Set up margins and dimensions
-    const margin = { top: 100, right: 160, bottom: 200, left: 80 };
+    const margin = { top: 130, right: 160, bottom: 80, left: 80 };
     const width = 1000 - margin.left - margin.right;
     const height = 900 - margin.top - margin.bottom;
 
@@ -14,6 +14,15 @@ function createRenewableEnergyChart() {
         .attr('height', height + margin.top + margin.bottom)
         .append('g')
         .attr('transform', `translate(${margin.left},${margin.top})`);
+
+    // Add title for the chart
+    svg.append('text')
+        .attr('x', (width + margin.left + margin.right) / 2.5)
+        .attr('y', -margin.top / 1.5) // Adjusted position
+        .attr('text-anchor', 'middle')
+        .style('font-size', '24px')
+        .style('font-weight', 'bold')
+        .text('Renewable Energy Production vs Consumption in East Asia (2015–2021)');
 
     // Create tooltip
     const tooltip = d3.select('body')
@@ -153,7 +162,6 @@ function createRenewableEnergyChart() {
                                     <strong>${d.country}</strong><br/>
                                     Year: ${d.year}<br/>
                                     ${type}: ${d.value.toFixed(2)} TWh<br/>
-                                    <small>(Click for details)</small>
                                 `)
                                 .style('left', (event.pageX + 10) + 'px')
                                 .style('top', (event.pageY - 28) + 'px');
@@ -186,7 +194,7 @@ function createRenewableEnergyChart() {
 
             // Add legend
             const legend = svg.append('g')
-                .attr('transform', `translate(${width - 50}, -80)`);
+                .attr('transform', `translate(${width - 50}, -50)`); // Adjusted position
 
             // Legend title
             legend.append('text')

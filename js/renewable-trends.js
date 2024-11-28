@@ -87,7 +87,7 @@ d3.csv('data/cleaned/01_cleaned_renewable_energy_data.csv').then(function(rawDat
         .attr('text-anchor', 'middle')
         .style('font-size', '20px')
         .style('font-weight', 'bold')
-        .text('Renewable Energy Trends in East Asia (2015-2021)');
+        .text('Primary Energy from Renewable Sources within East Asia (2015-2021)');
 
     // Create tooltip
     const tooltip = d3.select('body')
@@ -213,7 +213,7 @@ d3.csv('data/cleaned/01_cleaned_renewable_energy_data.csv').then(function(rawDat
         {
             year: 2020,
             value: 14.2,
-            text: "China peaks at 14.2%",
+            text: "China peaks at 14.9%",
             country: "China"
         },
         {
@@ -235,8 +235,8 @@ d3.csv('data/cleaned/01_cleaned_renewable_energy_data.csv').then(function(rawDat
 
         svg.append('text')
             .attr('class', 'annotation')
-            .attr('x', xScale(annotation.year) + 10)
-            .attr('y', yScale(annotation.value) - 10)
+            .attr('x', xScale(annotation.year) - 20)
+            .attr('y', yScale(annotation.value) - 30)
             .text(annotation.text);
     });
 });
