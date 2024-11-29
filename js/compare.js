@@ -1,5 +1,5 @@
 const svg = d3.select("#chart"),
-    margin = { top: 40, right: 60, bottom: 60, left: 60 },
+    margin = { top: 40, right: 60, bottom: 60, left: 80 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -145,13 +145,13 @@ const updateChart = (measurement) => {
             .text("Year");
 
         // Y axis label
-        //g.append("text")
-        //    .attr("class", "axis-label")
-        //    .attr("text-anchor", "middle")
-        //    .attr("transform", `rotate(-90)`)
-        //    .attr("y", -52)
-        //    .attr("x", -height / 2)
-        //    .text("Value"); // Use the correct label
+        g.append("text")
+            .attr("class", "axis-label")
+            .attr("text-anchor", "middle")
+            .attr("transform", `rotate(-90)`)
+            .attr("y", -52)
+            .attr("x", -height / 2)
+            .text(measurement); // Use the correct label
 
         // Draw points for each country
         selectedCountries.forEach(country => {
