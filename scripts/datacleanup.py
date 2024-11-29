@@ -27,4 +27,4 @@ print("Missing values after cleaning:")
 print(data.isnull().sum())
 
 # Save the cleaned data to a new CSV file
-data.to_csv('New_OECD_RenewableEnergy.csv', index=False)
+data.to_csv('./data/cleaned/New_OECD_RenewableEnergy.csv', index=False)
