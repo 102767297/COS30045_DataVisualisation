@@ -1,7 +1,7 @@
 const svg = d3.select("#mapSvg");
 const projection = d3.geoMercator()
     .center([105, 35])  // Center point
-    .scale(680)  // Zoom scale
+    .scale(600)  // Zoom scale
     .translate([svg.attr("width") / 2, svg.attr("height") / 2]);
 
 const path = d3.geoPath().projection(projection);
