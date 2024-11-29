@@ -7,7 +7,7 @@ const svg = d3.select("#chart"),
 const countries = [
     { id: 'TWN', name: 'Taiwan' },
     { id: 'JPN', name: 'Japan' },
-    { id: 'KOR', name: 'South Korea' },
+    { id: 'KOR', name: 'Korea' },
     { id: 'MNG', name: 'Mongolia' },
     { id: 'CHN', name: 'China' }
 ];
